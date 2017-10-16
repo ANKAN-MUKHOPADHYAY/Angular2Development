@@ -1,0 +1,42 @@
+
+ 
+<ion-content class="login-content" padding>
+  <div class="login-box">
+    
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label>Username</ion-label>
+              <ion-input type="text" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Email ID</ion-label>
+              <ion-input type="email"  name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Mobile</ion-label>
+              <ion-input type="tel" name="mobnum" maxlength="10" [(ngModel)]="registerCredentials.mobnum" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Password</ion-label>
+              <ion-input type="password"  name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+    <button ion-button class="register-btn" block clear (click)="loginAccount()">Existing User? Log In</button>
+  </div>
+</ion-content>

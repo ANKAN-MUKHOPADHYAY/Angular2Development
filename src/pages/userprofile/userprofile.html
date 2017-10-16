@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-buttons start>
+      <button ion-button (click)="goToHome()">
+        <ion-icon name="ios-home-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      User Profile
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page home">
+	<section class="basic-profile-container">
+		<div class="toppart">
+		</div>
+		<div class="middlepart">
+			<div class="profile_photo_container">
+				<img src="{{profile_picture}}" class="img-circle" alt="Profile">
+				<div class="uploadNew" (click)="openBasicModal()">
+					<ion-icon class="cameraUpload" name="camera"></ion-icon>
+				</div>
+				<!-- <div class="uploadNew">
+					<input type="file" name="camera" class="uploadPhoto">
+					<ion-icon class="cameraUpload" name="camera"></ion-icon>
+				</div> -->
+			</div>
+		</div>
+		<div class="bottompart">
+			<form (ngSubmit)="updateDetails()" #updateForm="ngForm">
+				<ion-list class="updateBlock">
+				    <ion-item>
+				    	<ion-label floating>Username</ion-label>
+				    	<ion-input type="text" name="username" [(ngModel)]='user_name' required></ion-input>
+				    </ion-item>
+				    <ion-item>
+				    	<ion-label floating>Email ID</ion-label>
+				    	<ion-input type="email" name="email" [(ngModel)]='user_email' required></ion-input>
+				    </ion-item>
+				    <ion-item>
+				    	<ion-label floating>Mobile Number</ion-label>
+				    	<ion-input type="tel" name="mobnum" maxlength="10" [(ngModel)]='user_mobile' required></ion-input>
+				    </ion-item>
+				</ion-list>
+				<div padding>
+			      	<button ion-button type="submit" color="primary" block [disabled]="!updateForm.form.valid">Update Details</button>
+		    	</div>
+		    </form>
+		</div>
+	</section>
+</ion-content>

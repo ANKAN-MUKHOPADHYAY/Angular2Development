@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>
+      Member Area
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home" padding>
+  <ion-card>
+    <img src="{{selectedItem.course_img}}"/>
+    <ion-card-content>
+      <ion-card-title>Interview Questions</ion-card-title>
+        <div class="quiz-area" *ngIf="inProgress">
+          <div *ngIf="!quizOver">
+            <p id="question" style="font-weight: bold"><span>Q{{id+1}}. </span>{{question}}</p>
+            <ul id="options">
+              <li *ngFor="let option of options">
+                <label>
+                  <input type="radio" [(ngModel)]="ans" name="answer" value="{{option}}">
+                  {{option}}
+                </label>
+              </li>
+            </ul>
+            <ion-item *ngIf="answerMode">
+              <button ion-button (click)="checkAnswer()">
+                Check
+              </button>
+            </ion-item>
+            <ion-item *ngIf="!answerMode">
+              <button ion-button color="secondary" icon-right (click)="nextQuestion()" class="next-question">   Next
+                 <ion-icon name="ios-arrow-dropright-outline"></ion-icon>
+              </button>
+              <p *ngIf="correctAns">Wow, correct answer!</p>
+              <p *ngIf="!correctAns">Sorry, incorrect answer.</p>
+            </ion-item>
+          </div>
+
+          <div id="score">
+            Score: {{score}} out of  {{totalQuestion}}
+          </div>
+
+          <ion-item *ngIf="quizOver">
+            <h2 style="font-family: monospace; font-weight: bold; font-style: italic; font-size: 17px; text-align: center;">Quiz is over</h2>
+            <h3 style="font-family: monospace; font-weight: bold; font-style: italic; font-size: 17px; text-align: center;">You have scored: {{resultPercent}}%</h3>
+            <button ion-button center color="secondary" (click)="submitScore()">Play again</button>
+            <button ion-button center color="secondary" (click)="submitScore()">Submit Score</button>
+          </ion-item>
+        </div>
+
+
+        <div class="intro" *ngIf="!inProgress">
+          <p>{{selectedItem.course_description}}</p>
+          <ion-item>
+            <button ion-button round block color="dark" id="startQuiz" (click)="start()">Start</button>
+          </ion-item>
+        </div>
+    </ion-card-content>
+    
+
+  </ion-card>
+</ion-content>

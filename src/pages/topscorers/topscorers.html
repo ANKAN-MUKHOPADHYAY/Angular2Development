@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-buttons start>
+      <button ion-button (click)="goToHome()">
+        <ion-icon name="ios-home-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Top Scorer
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page home">
+	<ion-card *ngFor="let score of scores">
+		<ion-item>
+			<ion-avatar item-start>
+				<img src="{{score.profile_picture}}">
+			</ion-avatar>
+			<h2>{{score.user_name}}</h2>
+			<p>{{score.submission_time}}</p>
+		</ion-item>
+		<img src="{{score.logo}}">
+		<ion-row>
+			<ion-col>
+				<button ion-button color="primary" clear small icon-start>
+					<ion-icon name='thumbs-up'></ion-icon>
+					{{score.OBTAIN}}%
+				</button>
+			</ion-col>
+			<ion-col align-self-center text-center>
+				<ion-note>
+					{{score.timediffhour}}h {{score.timediffminute}}min ago
+				</ion-note>
+			</ion-col>
+		</ion-row>
+	</ion-card>
+</ion-content>

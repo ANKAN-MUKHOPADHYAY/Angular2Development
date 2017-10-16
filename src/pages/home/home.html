@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-buttons start>
+      <button ion-button (click)="otherOptions()">
+        <ion-icon name="ios-settings"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Member Area
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page home">
+  <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <img src="{{item.course_img}}" style="opacity: 0.4" />
+    <div class="card-title">{{item.course_name}}</div>
+    <div class="card-subtitle">Mock Interview Questions</div>
+  </ion-card>
+</ion-content>
+
